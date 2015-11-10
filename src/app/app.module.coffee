@@ -17,6 +17,7 @@ angular
     # Feature areas
     # angular-meteoric whatsApp
     'whatsapp.services'
+    'angular-meteor'
     # starter: tabs
     # 'starter.account'
     'starter.chat'

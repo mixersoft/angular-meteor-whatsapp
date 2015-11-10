@@ -31,6 +31,8 @@ paths =
   index: './www/index.html'
   sources: [ './www/**/*.js', './www/**/*.css', '!./www/**/*.module.js', '!./www/blocks/router/*', '!./www/core/*', '!./www/layout/*', '!./www/lib/**/*.js']
   modules: ['./www/**/*.module.js', '!./www/blocks/router/*', '!./www/core/*', '!./www/layout/*']
+  meteor: ['server/**/*.coffee']
+  meteor_dest: './server/'
 
 # Add your bower_components vendors to vendor.js
 vendorPaths =
@@ -68,6 +70,15 @@ gulp.task 'coffee', ->
     .pipe coffee().on('error', gutil.log)
     .pipe if argv.production then uglify() else gutil.noop()
     .pipe gulp.dest(paths.dest)
+
+gulp.task 'meteor', ->
+  gulp.src paths.meteor
+    .pipe cache 'meteor'
+    .pipe coffeelint()
+    .pipe coffeelint.reporter coffeStylish
+    .pipe coffee().on('error', gutil.log)
+    .pipe if argv.production then uglify() else gutil.noop()
+    .pipe gulp.dest(paths.meteor_dest)
 
 gulp.task 'index', ->
   # Inject in the correct order to startup app
