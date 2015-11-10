@@ -15,10 +15,12 @@ angular
     'starter.core'
     'starter.layout'
     # Feature areas
+    # angular-meteoric whatsApp
+    'whatsapp.services'
     # starter: tabs
-    'starter.account'
+    # 'starter.account'
     'starter.chat'
-    'starter.dash'
+    # 'starter.dash'
     # starter: sidemenu
     'starter.data'
     'starter.home'
