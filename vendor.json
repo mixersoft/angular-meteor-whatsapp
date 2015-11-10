@@ -4,15 +4,17 @@
     "ionic/fonts/*"
   ],
   "dev": [
-    "ionic/js/ionic.bundle.js", 
     "ionic/fonts/*", 
     "lodash/lodash.min.js",
     "angular-toastr/dist/angular-toastr.tpls.min.js",
     "angular-toastr/dist/angular-toastr.min.css",
     "angular-moment/angular-moment.min.js",
+    "angular-meteor/dist/angular-meteor.bundle.js"
+  ],
+  "copy":[
+    "ionic/js/ionic.bundle.js",
     "moment/min/moment.min.js",
     "meteor-client-side/meteor-runtime-config.js",
-    "meteor-client-side/dist/meteor-client-side.bundle.js",
-    "angular-meteor/dist/angular-meteor.bundle.js"
+    "meteor-client-side/dist/meteor-client-side.bundle.js"
   ]
 }
