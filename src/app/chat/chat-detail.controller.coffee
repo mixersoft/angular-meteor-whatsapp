@@ -3,7 +3,7 @@
 ChatDetailCtrl = ($log, $scope, $stateParams, Chats) ->
   $log.info "Creating ChatDetailCtrl"
 
-  $scope.chat = Chats.get $stateParams.chatId
+  $scope.chat = $scope.$meteorObject(Chats, $stateParams.chatId, false)
 
 ChatDetailCtrl.$inject = ['$log', '$scope', '$stateParams', 'Chats']
 

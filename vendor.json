@@ -12,7 +12,7 @@
     "angular-moment/angular-moment.min.js",
     "moment/min/moment.min.js",
     "meteor-client-side/meteor-runtime-config.js",
-    "meteor-client-side/dist/meteor-client-side.bundle.min.js",
+    "meteor-client-side/dist/meteor-client-side.bundle.js",
     "angular-meteor/dist/angular-meteor.bundle.js"
   ]
 }

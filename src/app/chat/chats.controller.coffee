@@ -1,6 +1,6 @@
 'use strict'
 
-ChatsCtrl = ($log, $scope, Chats) ->
+ChatsCtrl = ($log, $scope, exportDebug) ->
   $log.info "Creating ChatsCtrl"
 #	  With the new view caching in Ionic, Controllers are only called
 #	  when they are recreated or on app start, instead of every page change.
@@ -9,11 +9,17 @@ ChatsCtrl = ($log, $scope, Chats) ->
 #
 #	  $scope.$on '$ionicView.enter', (e) ->
 
-  $scope.chats = Chats.all()
+  $scope.chats = $scope.$meteorCollection(Chats)
   $scope.remove = (chat) ->
-    Chats.remove chat
+    $scope.chats.remove(chat)
+    return
 
-ChatsCtrl.$inject = ['$log', '$scope', 'Chats']
+
+  exportDebug.set 'Chats', Chats # reference global MongoColletion
+    
+  return
+
+ChatsCtrl.$inject = ['$log', '$scope', 'exportDebug']
 
 angular.module 'starter.chat'
   .controller 'ChatsCtrl', ChatsCtrl
