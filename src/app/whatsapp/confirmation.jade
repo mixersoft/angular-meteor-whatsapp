@@ -1,0 +1,21 @@
+//- confirmation.jade
+ion-view(title="{{phone}}")
+  ion-nav-buttons(side="right")
+    button.button.button-clear.button-positive(
+      ng-click="verify()"
+      ng-disabled="!data.code || data.code.length === 0"
+    ) Done
+      
+  ion-content.confirmation
+    div.text-center.pading  We have sent you an SMS with a code to the number above
+    div.text-center.pading  To complete your phone number verification whatsapp, please enter the 4-digit activation code.
+
+
+    div.list.padding-top
+      label.item.item-input
+        input(
+          ng-model="data.code"
+          on-return="verify()"
+          type="text"
+          placeholder="Code"
+        )

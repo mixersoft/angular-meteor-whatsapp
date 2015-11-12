@@ -11,7 +11,9 @@ ion-view(view-title="{{chat.name}}")
   ion-content.chat(delegate-hangle="chatScroll")
     div.message-list
       div.message-wrapper(ng-repeat="message in messages")
-        div.message(ng-class-even="'message-mine'" ng-class-odd="'message-other'")
+        div.message(
+          ng-class="message.userId === $root.currentUser._id ? 'message-mine' : 'message-other'"
+        )
           div.message-text {{message.text}}
           span.message-timestamp {{message.timestamp | amDateFormat: 'HH:MM'}}
 

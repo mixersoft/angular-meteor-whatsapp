@@ -10,6 +10,7 @@ Meteor.methods {
     }
 
     message.timestamp = new Date()
+    message.userId = this.userId
 
     messageId = Messages.insert(message)
     Chats.update message.chatId, {

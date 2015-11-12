@@ -1,0 +1,22 @@
+//- profile.jade
+ion-view(title="Profile")
+  ion-nav-buttons(side="right")
+    button.button.button-clear.button-positive(
+      ng-click="updateName()"
+      ng-disabled="!data.name || data.name.length === 0"
+    ) Done
+      
+  ion-content.profile
+    a.profile-picture.positive
+      div.upload-placeholder Add Photo
+
+    div.instructions  Enter your name and add an optional profile picture
+
+    div.list.profile-name
+      label.item.item-input
+        input(
+          ng-model="data.name"
+          on-return="updateName()"
+          type="text"
+          placeholder="Your name"
+        )

@@ -13,6 +13,8 @@ getStates = ->
       url: '/tab'
       abstract: true
       templateUrl: 'layout/tabs.html'
+      resolve:
+        user: ['$meteor', ($meteor)-> return $meteor.requireUser() ]
   ,
     state: 'app'
     config:

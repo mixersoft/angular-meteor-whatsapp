@@ -1,0 +1,19 @@
+//- login.jade
+ion-view(title="Your phone number")
+  ion-nav-buttons(side="right")
+    button.button.button-clear.button-positive(
+      ng-click="login()"
+      ng-disabled="!data.phone || data.phone.length === 0"
+    ) Done
+      
+  ion-content.login
+    div.text-center.instructions  Please confirm your country code and enter your phone number
+
+    div.list
+      label.item.item-input
+        input(
+          ng-model="data.phone"
+          on-return="login()"
+          type="text"
+          placeholder="Your phone number"
+        )
