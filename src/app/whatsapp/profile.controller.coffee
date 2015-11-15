@@ -1,10 +1,10 @@
 # profile.controller.coffee
 'use strict'
 
-ProfileCtrl = ($scope, $state, $meteor, $ionicLoading, $ionicPopup, $log)->
+ProfileCtrl = ($scope, $state, $meteor, $ionicLoading, $ionicPopup, $log, toastr)->
 
   user = Meteor.user()
-  name = user && if user.profile then user.profile.name else ''
+  name = user.profile?.name || ''
 
   $scope.data = {
     name: name
@@ -30,10 +30,14 @@ ProfileCtrl = ($scope, $state, $meteor, $ionicLoading, $ionicPopup, $log)->
     })
     return
 
+  return
 
 
 
-ProfileCtrl.$inject = ['$scope', '$state', '$meteor', '$ionicLoading', '$ionicPopup', '$log']
+
+ProfileCtrl.$inject = ['$scope', '$state', '$meteor', '$ionicLoading', '$ionicPopup'
+'$log', 'toastr'
+]
 
 angular.module 'whatsapp.services'
   .controller 'ProfileCtrl', ProfileCtrl

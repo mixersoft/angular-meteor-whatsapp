@@ -1,7 +1,7 @@
 //- profile.jade
 ion-view(title="Profile")
   ion-nav-buttons(side="right")
-    button.button.button-clear.button-positive(
+    button.button.button-clear(
       ng-click="updateName()"
       ng-disabled="!data.name || data.name.length === 0"
     ) Done

@@ -63,4 +63,4 @@ ProfileCtrl.$inject = [
 ]
 
 angular.module 'starter.home'
-  .controller 'ProfileCtrl', ProfileCtrl
+  .controller 'XXX-ProfileCtrl', ProfileCtrl
