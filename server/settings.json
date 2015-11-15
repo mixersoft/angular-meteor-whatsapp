@@ -1,7 +1,7 @@
 {
   "TWILIO": {
     "FROM": "meteor-whatsapp",
-    "SID": "",
+    "SID": "__do-NOT-leave-blank__",
     "TOKEN": ""
   },
   "ACCOUNTS_PHONE": {
