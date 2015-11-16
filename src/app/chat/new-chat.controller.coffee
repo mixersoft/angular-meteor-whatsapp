@@ -2,13 +2,15 @@
 'use strict'
 
 NewChatCtrl = ($scope, $meteor, $state)->
-
-  $scope.users = $scope.$meteorCollection ()->
-    return Meteor.users.find {
-      _id:
-        $ne: Meteor.userId()
-    }
-  , false
+  $scope.$meteorSubscribe('users')
+  .then ()->
+    $scope.users = $scope.$meteorCollection ()->
+      return Meteor.users.find {
+        _id:
+          $ne: Meteor.userId()
+      }
+    , false
+    return $scope.users
 
   $scope.hideModal = ()->
     $scope.modal.hide()
