@@ -25,5 +25,5 @@ angular
     # starter: sidemenu
     'starter.data'
     'starter.home'
-    'starter.profile'
+    # 'starter.profile'
   ]

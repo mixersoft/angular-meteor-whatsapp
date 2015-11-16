@@ -1,0 +1,14 @@
+//- new-chat.jade
+ion-modal-view(ng-controller="NewChatCtrl")
+  ion-header-bar
+    h1.title New chat
+    div.buttons
+      button.button.button-clear(ng-click="hideModal()") Cancel
+
+  ion-content
+    div.list
+      a.item(ng-repeat="user in users" ng-click="newChat(user._id)")
+        h2 {{user.profile.name}}
+        p Hey there! I am using ionic-Whatsapp with meteor.
+        
+

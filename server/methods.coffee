@@ -29,5 +29,37 @@ Meteor.methods {
 
     return Meteor.users.update(this.userId, { $set: { 'profile.name': name } })
 
+  newChat: (otherId)->
+    if ! this.userId
+      throw new Meteor.Error 'not-logged-in', "Must be logged in to create a chat."
+
+    check otherId, String
+
+    otherUser = Meteor.users.findOne otherId
+    if !otherUser
+      throw new Meteor.Error 'user-not-exists', "Chat's user does not exist"
+
+    chat = {
+      userIds: [this.userId, otherId]
+      createdAt: new Date()
+    }
+
+    return Chats.insert chat
+
+  # made secure by: `meteor remove insecure`
+  removeChat: (chatId)->
+    if !this.userId
+      throw new Meteor.Error('not-logged-in', 'Must be logged to create a chat.')
+
+    check chatId, String
+    chat = Chats.findOne chatId
+    if !chat || !_.include(chat.userIds, this.userId)
+      throw new Meteor.Error 'chat-not-exists', 'Chat does not exist'
+
+    Messages.remove {chatId: chatId}
+    return Chats.remove {_id: chatId}
+
+
+
 
 }

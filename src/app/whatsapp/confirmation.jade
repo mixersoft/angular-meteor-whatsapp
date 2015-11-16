@@ -1,7 +1,7 @@
 //- confirmation.jade
 ion-view(title="{{phone}}")
   ion-nav-buttons(side="right")
-    button.button.button-clear.button-positive(
+    button.button.button-clear(
       ng-click="verify()"
       ng-disabled="!data.code || data.code.length === 0"
     ) Done

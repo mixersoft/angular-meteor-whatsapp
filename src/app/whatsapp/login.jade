@@ -1,7 +1,7 @@
 //- login.jade
 ion-view(title="Your phone number")
   ion-nav-buttons(side="right")
-    button.button.button-clear.button-positive(
+    button.button.button-clear(
       ng-click="login()"
       ng-disabled="!data.phone || data.phone.length === 0"
     ) Done

@@ -9,7 +9,7 @@
     "angular-toastr/dist/angular-toastr.tpls.min.js",
     "angular-toastr/dist/angular-toastr.min.css",
     "angular-moment/angular-moment.min.js",
-    "accounts-phone/dist/accounts-phone.bundle.min.js",
+    "accounts-phone/dist/accounts-phone.bundle.js",
     "angular-meteor/dist/angular-meteor.bundle.js"
   ],
   "copy":[
@@ -17,6 +17,6 @@
     "moment/min/moment.min.js",
     "meteor-client-side/meteor-runtime-config.js",
     "meteor-client-side/dist/meteor-client-side.bundle.js",
-    "accounts-base-client-side/dist/accounts-base-client-side.bundle.min.js"
+    "accounts-base-client-side/dist/accounts-base-client-side.bundle.js"
   ]
 }

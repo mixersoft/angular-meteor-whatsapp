@@ -3,10 +3,10 @@
 // The FriendsCtrl pulls data from the Friends service (service.js)
 // The Friends service returns an array of friend data
 
-ion-view(view-title="{{chat.name}}")
+ion-view(view-title="{{chat | chatName}}")
   ion-nav-buttons(side="right")
     button.button.button-clear
-      img.header-picture(ng-src="{{chat.picture}}")
+      img.header-picture(ng-src="{{chat | chatPicture}}")
 
   ion-content.chat(delegate-hangle="chatScroll")
     div.message-list
@@ -29,7 +29,7 @@ ion-view(view-title="{{chat.name}}")
       on-return="sendMessage()"
       )
     span(ng-if="data.message.length > 0")
-      button.button.button-clear.button-positive(ng-click="sendMessage()") Send
+      button.button.button-clear(ng-click="sendMessage()") Send
 
     span(ng-if="!data.message || data.message.length === 0")
       button.button.button-clear.button-icon.button-positive.icon.ion-ios-camera-outline
