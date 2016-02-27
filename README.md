@@ -11,6 +11,15 @@ bower install
 npm install
 # if you need to run as administrator, use `sudo npm install`
 
+
+# to start meteor server (if possible, use another shell)
+# NOTE: confirm server port setting here: ./bower_components/meteor-client-side/meteor-runtime-config.js
+cd ./server; meteor run --port 3333 --settings ./settings.json & 
+cd ..
+
+# to run the project in a browser
+gulp dev
+
 # To continue dev in a new git repo
 git remote rename origin seed
 git remote add origin [github repo]
