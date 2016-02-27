@@ -1,9 +1,12 @@
 # input.directive.coffee
 'use strict'
 
+# // The directive enable sending message when tapping return
+# // and expose the focus and blur events to adjust the view
+# // when the keyboard opens and closes
 InputDirective = ($timeout)->
   directive = {
-    restrict: 'E',
+    restrict: 'EA',
     scope: {
       'returnClose': '=',
       'onReturn': '&',
@@ -38,5 +41,5 @@ InputDirective = ($timeout)->
 InputDirective.$inject = ['$timeout']
 
 
-angular.module('starter')
-  .directive 'input', InputDirective
+angular.module('blocks.components')
+  .directive 'autoInput', InputDirective

@@ -25,7 +25,7 @@ ion-view(view-title="{{vm.title}}")
                   ng-src="{{vm.me.face}}"
                   ui-sref="app.profile({id:'{{vm.me.id}}'})"
                 )
-                {{vm.me.firstname}} {{vm.me.lastname}}
+                span {{vm.me.firstname}} {{vm.me.lastname}}
               div.item(ng-hide="vm.me") You are not signed in
 
           div.item

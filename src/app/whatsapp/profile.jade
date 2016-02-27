@@ -7,8 +7,10 @@ ion-view(title="Profile")
     ) Done
       
   ion-content.profile
-    a.profile-picture.positive
-      div.upload-placeholder Add Photo
+    a.profile-picture.positive(ng-click="updatePicture()")
+      div(ng-if="user.profile.picture")
+        img(ng-src="{{user.profile.picture}}" alt="profile picture")
+      div.upload-placeholder(ng-if="!user.profile.picture") Add Photo
 
     div.instructions  Enter your name and add an optional profile picture
 

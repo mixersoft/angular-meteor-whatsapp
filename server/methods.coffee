@@ -6,10 +6,16 @@ Meteor.methods {
     if !this.userId
       throw new Meteor.Error('not-logged-in', 'Must be logged to send a message.')
 
-    check message, {
-      text: String
+    check message, Match.OneOf( {
+      text: String,
+      type: String,
       chatId: String
-    }
+    },
+    {
+      picture: String,
+      type: String,
+      chatId: String
+    })
 
     message.timestamp = new Date()
     message.userId = this.userId
@@ -21,13 +27,21 @@ Meteor.methods {
     return messageId
 
   updateName: (name)->
-    if !this.userId
+    if not this.userId
       throw new Meteor.Error('not-logged-in', 'Must be logged to update profile.')
 
     check name, String
     throw Meteor.Error('name-required', 'Must provide user name') if name.length == 0
 
     return Meteor.users.update(this.userId, { $set: { 'profile.name': name } })
+
+  updatePicture: (data)->
+    if not this.userId
+      throw new Meteor.Error 'not-logged-in', 'Must be logged in to update his picture.'
+
+    check data, String
+    return Meteor.users.update( this.userId, { $set: { 'profile.picture': data } })
+
 
   newChat: (otherId)->
     if ! this.userId

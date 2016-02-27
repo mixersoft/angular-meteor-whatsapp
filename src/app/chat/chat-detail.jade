@@ -14,13 +14,18 @@ ion-view(view-title="{{chat | chatName}}")
         div.message(
           ng-class="message.userId === $root.currentUser._id ? 'message-mine' : 'message-other'"
         )
-          div.message-text {{message.text}}
+          //- div.message-text {{message.text}}
+          ng-switch(on="message.type")
+            div.text(ng-switch-when="text") {{message.text}}
+            div.picture(ng-switch-when="picture") 
+              img(ng-src="{{message.picture}}")
           span.message-timestamp {{message.timestamp | amDateFormat: 'HH:MM'}}
 
   ion-footer-bar.bar-stable.footer-chat.item-input-inset(keyboard-attach)
     button.button.button-clear.button-icon.button-positive.icon.ion-ios-upload-outline
     label.item-input-wrapper
       input(
+      auto-input
       on-focus="inputUp()" 
       on-blur="inputDown()" 
       dir="auto" 
@@ -32,7 +37,7 @@ ion-view(view-title="{{chat | chatName}}")
       button.button.button-clear(ng-click="sendMessage()") Send
 
     span(ng-if="!data.message || data.message.length === 0")
-      button.button.button-clear.button-icon.button-positive.icon.ion-ios-camera-outline
+      button.button.button-clear.button-icon.button-positive.icon.ion-ios-camera-outline(ng-click="sendPicture()")
       i.buttons-seperator.icon.ion-android-more-vertical
       button.button.button-clear.button-icon.button-positive.icon.ion-ios-mic-outline
 

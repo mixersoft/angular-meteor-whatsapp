@@ -12,7 +12,12 @@ ion-view(view-title="Chats")
       )
         img(ng-src="{{chat | chatPicture}}")
         h2 {{chat | chatName}}
-        p {{chat.lastMessage.text}}
+        //- p {{chat.lastMessage.text}}
+        ng-switch(on="chat.lastMessage.type")
+          p.text(ng-switch-when="text") {{chat.lastMessage.text}}
+          p.picture(ng-switch-when="picture") 
+            img(ng-src="{{message.picture}}")
+
         span.last-message-timestamp {{chat.lastMessage.timestamp | calendar}}
         i.icon.ion-chevron-right.icon-accessory
 

@@ -4,28 +4,53 @@
 return if !Meteor.isServer
 
 bootstrap = ()->
+  if Accounts.users.find().count() == 0
+    Accounts.createUserWithPhone({
+      phone: '+35912345678',
+      profile: {
+        name: 'My friend in BG'
+      }
+    })
+    Accounts.createUserWithPhone({
+      phone: '123456789',
+      profile: {
+        name: '123'
+      }
+    })
+    Accounts.createUserWithPhone({
+      phone: '987654321',
+      profile: {
+        name: '987'
+      }
+    })
+
   if Chats.find().count() == 0
     Messages.remove {}
 
     messages = [
       {
         text: 'You on your way?',
+        type: 'text'
         timestamp: moment().subtract(1, 'hours').toDate()
       },
       {
         text: 'Hey, it\'s me',
+        type: 'text'
         timestamp: moment().subtract(2, 'hours').toDate()
       },
       {
         text: 'I should buy a boat',
+        type: 'text'
         timestamp: moment().subtract(1, 'days').toDate()
       },
       {
         text: 'Look at my mukluks!',
+        type: 'text'
         timestamp: moment().subtract(4, 'days').toDate()
       },
       {
         text: 'This is wicked good ice cream.',
+        type: 'text'
         timestamp: moment().subtract(2, 'weeks').toDate()
       }
     ]

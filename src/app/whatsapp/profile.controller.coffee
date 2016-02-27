@@ -19,6 +19,20 @@ ProfileCtrl = ($scope, $state, $meteor, $ionicLoading, $ionicPopup, $log, toastr
     .catch handleError
     return
 
+  $scope.updatePicture = ()->
+    # get base64 DATA_URI from ngCordova Camera
+    data = ""  # base64 DATA_URI
+    $ionicLoading.show {
+      template: 'Updating picture...'
+    }
+    $meteor.call('updatePicture', data)
+    .finally ()->
+      $ionicLoading.hide()
+    .catch (err)->
+      handleError(err)
+      return
+    return
+
 
   handleError = (err)->
     $log.error('Profile Save error ', err)
