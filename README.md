@@ -14,7 +14,7 @@ npm install
 
 # to start meteor server (if possible, use another shell)
 # NOTE: confirm server port setting here: ./bower_components/meteor-client-side/meteor-runtime-config.js
-cd ./server; meteor run --port 3333 --settings ./settings.json & 
+cd ./meteor; meteor run --port 5555 --settings ./settings.json & 
 cd ..
 
 # to run the project in a browser
