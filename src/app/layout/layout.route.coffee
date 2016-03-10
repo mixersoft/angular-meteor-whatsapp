@@ -1,10 +1,15 @@
 'use strict'
 
-otherwisePath = '/app/home'
-# otherwisePath = '/tab/chats'
+# otherwisePath = '/app/home'
+otherwisePath = '/tab/chats/'
 
-appRun = (routerHelper) ->
+appRun = (routerHelper, $location) ->
   routerHelper.configureStates getStates(), otherwisePath
+  # HACK: otherwise routing not working after angualar-meteor#1.3.3
+  if not $location.path()
+    location.href = '#' + otherwisePath
+  else
+    location.href = '#/tab'
 
 getStates = ->
   [
@@ -26,7 +31,7 @@ getStates = ->
       # controllerAs: 'vm'
   ]
 
-appRun.$inject = ['routerHelper']
+appRun.$inject = ['routerHelper', '$location']
 
 angular
   .module 'starter.layout'
