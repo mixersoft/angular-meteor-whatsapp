@@ -10,7 +10,8 @@
     "angular-toastr/dist/angular-toastr.min.css",
     "angular-moment/angular-moment.min.js",
     "accounts-phone/dist/accounts-phone.bundle.js",
-    "angular-meteor/dist/angular-meteor.bundle.js"
+    "angular-meteor/dist/angular-meteor.bundle.js",
+    "angular-meteor-auth/dist/angular-meteor-auth.bundle.js"
   ],
   "copy":[
     "ionic/js/ionic.bundle.js",

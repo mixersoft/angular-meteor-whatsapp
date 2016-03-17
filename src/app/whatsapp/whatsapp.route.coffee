@@ -23,7 +23,7 @@ getStates = ->
       templateUrl: 'whatsapp/profile.html'
       controller: 'ProfileCtrl'
       resolve:
-        user: ['$meteor', ($meteor)-> return $meteor.requireUser() ]
+        user: ['$auth', ($auth)-> return $auth.requireUser() ]
   ,
     state: 'tab.settings'
     config:

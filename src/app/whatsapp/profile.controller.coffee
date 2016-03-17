@@ -1,8 +1,8 @@
 # profile.controller.coffee
 'use strict'
 
-ProfileCtrl = ($scope, $state, $meteor, $ionicLoading, $ionicPopup, $log, toastr)->
-
+ProfileCtrl = ($scope, $state, $reactive, $ionicLoading, $ionicPopup, $log, toastr)->
+  $reactive(this).attach($scope)
   user = Meteor.user()
   name = user.profile?.name || ''
 
@@ -12,7 +12,7 @@ ProfileCtrl = ($scope, $state, $meteor, $ionicLoading, $ionicPopup, $log, toastr
   $scope.updateName = ()->
     return if _.isEmpty $scope.data.name
 
-    $meteor.call 'updateName', $scope.data.name
+    this.call 'updateName', $scope.data.name
     .then ()->
       $state.go 'tab.chats'
       return
@@ -25,7 +25,7 @@ ProfileCtrl = ($scope, $state, $meteor, $ionicLoading, $ionicPopup, $log, toastr
     $ionicLoading.show {
       template: 'Updating picture...'
     }
-    $meteor.call('updatePicture', data)
+    this.call('updatePicture', data)
     .finally ()->
       $ionicLoading.hide()
     .catch (err)->
@@ -49,7 +49,7 @@ ProfileCtrl = ($scope, $state, $meteor, $ionicLoading, $ionicPopup, $log, toastr
 
 
 
-ProfileCtrl.$inject = ['$scope', '$state', '$meteor', '$ionicLoading', '$ionicPopup'
+ProfileCtrl.$inject = ['$scope', '$state', '$reactive', '$ionicLoading', '$ionicPopup'
 '$log', 'toastr'
 ]
 

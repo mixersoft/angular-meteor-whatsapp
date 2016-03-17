@@ -14,5 +14,3 @@ authRun.$inject = ['$rootScope', '$state']
 
 angular.module 'whatsapp.services'
   .run authRun
-#   .value 'Chats', Chats
-#   .value 'Messages', Messages

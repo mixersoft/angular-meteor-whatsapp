@@ -14,7 +14,9 @@ Meteor.publishComposite 'chats', ()->
 
   return {
     find: ()->
-      return Chats.find { userIds: this.userId }
+      # return Chats.find { userIds: this.userId }
+      # chat.userIds not set in bootstrap
+      return Chats.find { }
     children: [
       {
         find: (chat)->

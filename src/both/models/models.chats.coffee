@@ -18,6 +18,7 @@ class ChatModel
 
 
 
+
 global['Chats'] = Chats = new Mongo.Collection('chats', {
   transform: (chat)->
     result = new ChatModel(chat)

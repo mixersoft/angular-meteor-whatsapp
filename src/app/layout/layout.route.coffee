@@ -19,8 +19,8 @@ getStates = ->
       abstract: true
       templateUrl: 'layout/tabs.html'
       resolve:
-        user: ['$meteor', ($meteor)-> return $meteor.requireUser() ]
-        chats: ['$meteor', ($meteor)-> return $meteor.subscribe('chats')]
+        user: ['$auth', ($auth)-> return $auth.requireUser() ]
+        # chats: ['$meteor', ($meteor)-> return $meteor.subscribe('chats')]
   ,
     state: 'app'
     config:

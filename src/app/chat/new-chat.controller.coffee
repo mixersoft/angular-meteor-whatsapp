@@ -1,16 +1,18 @@
 # login.controller.coffee
 'use strict'
 
-NewChatCtrl = ($scope, $meteor, $state)->
-  $scope.$meteorSubscribe('users')
-  .then ()->
-    $scope.users = $scope.$meteorCollection ()->
+NewChatCtrl = ($scope, $reactive, $state)->
+  # $reactive(this).attach($scope)
+
+  $scope.subscribe 'chats'
+
+  $scope.helpers {
+    'users': ()->
       return Meteor.users.find {
         _id:
           $ne: Meteor.userId()
       }
-    , false
-    return $scope.users
+  }
 
   $scope.hideModal = ()->
     $scope.modal.hide()
@@ -25,7 +27,7 @@ NewChatCtrl = ($scope, $meteor, $state)->
     }
     return gotoChat(chat._id) if chat
 
-    $meteor.call( 'newChat', userId )
+    $reactive.call( 'newChat', userId )
     .then (chatId)->
       gotoChat(chatId)
       return chatId
@@ -36,7 +38,7 @@ NewChatCtrl = ($scope, $meteor, $state)->
 
 
 
-NewChatCtrl.$inject = ['$scope', '$meteor', '$state']
+NewChatCtrl.$inject = ['$scope', '$reactive', '$state']
 
 angular.module 'starter.chat'
   .controller 'NewChatCtrl', NewChatCtrl

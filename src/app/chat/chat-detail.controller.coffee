@@ -1,14 +1,17 @@
 'use strict'
 
-ChatDetailCtrl = ($log, $scope, $stateParams, $timeout, $ionicScrollDelegate, $meteor) ->
+ChatDetailCtrl = ($log, $scope, $stateParams, $timeout, $ionicScrollDelegate, $reactive) ->
   $log.info "Creating ChatDetailCtrl"
+  # $reactive(this).attach($scope)
 
   isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS()
-  $scope.chat = $scope.$meteorObject(Chats, $stateParams.chatId, false)
 
-  $scope.messages = $scope.$meteorCollection ()->
-    return Messages.find { chatId: $stateParams.chatId}
-  , false
+  $scope.helpers {
+    'chat': ()->
+      return Chats.findOne($stateParams.chatId)
+    'messages': ()->
+      return Messages.find({ chatId: $stateParams.chatId })
+  }
 
   $scope.inputUp = ()->
     $scope.data.keyboardHeight = 216 if isIOS
@@ -32,7 +35,7 @@ ChatDetailCtrl = ($log, $scope, $stateParams, $timeout, $ionicScrollDelegate, $m
   $scope.sendMessage = ()->
     return if _.isEmpty $scope.data.message
 
-    $meteor.call 'newMessage', {
+    Meteor.call 'newMessage', {
       text: $scope.data.message
       type: 'text'
       chatId: $scope.chat._id
@@ -44,7 +47,7 @@ ChatDetailCtrl = ($log, $scope, $stateParams, $timeout, $ionicScrollDelegate, $m
   $scope.sendPicture = ()->
     # get base64 DATA_URI from ngCordova Camera
     data = ""  # base64 DATA_URI
-    $meteor.call('newMessage', {
+    Meteor.call('newMessage', {
       picture: data,
       type: 'picture',
       chatId: $scope.chat._id
@@ -56,7 +59,7 @@ ChatDetailCtrl = ($log, $scope, $stateParams, $timeout, $ionicScrollDelegate, $m
 
 
 ChatDetailCtrl.$inject = ['$log', '$scope', '$stateParams',  '$timeout'
-'$ionicScrollDelegate', '$meteor'
+'$ionicScrollDelegate', '$reactive'
 ]
 
 angular.module 'starter.chat'

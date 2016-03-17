@@ -55,7 +55,7 @@ bootstrap = ()->
       }
     ]
 
-    _.each messages, (o)->
+    messages.forEach (o)->
       # console.log('Message=' + i + ':' + JSON.stringify( o ))
       id = Messages.insert(o)
       # console.log("Message.id=" + id)

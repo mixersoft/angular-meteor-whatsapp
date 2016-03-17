@@ -1,14 +1,14 @@
 # login.controller.coffee
 'use strict'
 
-SettingsCtrl = ($scope, $meteor, $state)->
+SettingsCtrl = ($scope, $state)->
 
   $scope.logout = ()->
-    $meteor.logout().then ()->
+    Meteor.logout().then ()->
       $state.go('login')
 
 
-SettingsCtrl.$inject = ['$scope', '$meteor', '$state']
+SettingsCtrl.$inject = ['$scope', '$state']
 
 angular.module 'whatsapp.services'
   .controller 'SettingsCtrl', SettingsCtrl
